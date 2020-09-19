@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 
 void main() => runApp(MyApp());

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="34" viewBox="0 0 37 34">
+  <defs>
+    <clipPath id="clip-Watch_44mm_2">
+      <rect width="37" height="34"/>
+    </clipPath>
+  </defs>
+  <g id="Watch_44mm_2" data-name="Watch 44mm – 2" clip-path="url(#clip-Watch_44mm_2)">
+    <path id="Icon_feather-heart" data-name="Icon feather-heart" d="M17.284,5.747a4.265,4.265,0,0,0-6.034,0l-.822.822-.822-.822a4.266,4.266,0,1,0-6.034,6.034l.822.822,6.034,6.034L16.462,12.6l.822-.822a4.265,4.265,0,0,0,0-6.034Z" transform="translate(8.177 5.503)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

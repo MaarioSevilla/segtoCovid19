@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="34" viewBox="0 0 37 34">
+  <defs>
+    <clipPath id="clip-Watch_44mm_5">
+      <rect width="37" height="34"/>
+    </clipPath>
+  </defs>
+  <g id="Watch_44mm_5" data-name="Watch 44mm – 5" clip-path="url(#clip-Watch_44mm_5)">
+    <g id="Icon_feather-bar-chart" data-name="Icon feather-bar-chart" transform="translate(4 4)">
+      <path id="Trazado_233" data-name="Trazado 233" d="M18,23.75V15" transform="translate(-3.75 -3.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Trazado_234" data-name="Trazado 234" d="M27,20V6" transform="translate(-7.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Trazado_235" data-name="Trazado 235" d="M9,27.5V24" transform="translate(0 -7.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
