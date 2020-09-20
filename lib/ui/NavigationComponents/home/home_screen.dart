@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:intl/intl.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/temperature_bar.dart';
+import 'package:segtocovid19/ui/NavigationComponents/home/tempsave_button.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('EEE d MMM').format(now);
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Text('Home'),
-          SearchBar(),
-          IconButton(
-            icon: SvgPicture.asset("images/icons/homeicon.svg"),
-            onPressed: () {},
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(AntDesign.stepforward),
-              Icon(Ionicons.ios_search),
-              Icon(Ionicons.ios_heart),
-              Icon(Ionicons.ios_heart_empty),
-              Icon(Ionicons.ios_heart_half),
-              Icon(Ionicons.ios_heart_dislike),
-              Icon(Ionicons.ios_person),
-              Icon(Ionicons.ios_stats),
-              Icon(FontAwesome.glass),
-              Icon(MaterialIcons.ac_unit),
-              Icon(FontAwesome5.address_book),
-              Icon(FontAwesome5Solid.address_book),
-              Icon(FontAwesome5Brands.$500px)
-            ],
+          Text(formattedDate),
+          Container(
+            margin: EdgeInsets.only(top: 10, left: 40, bottom: 30),
+            height: 150,
+            decoration: BoxDecoration(
+              color: Color(0xffFFEDCF),
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+            ),
+            //aqui termina el diseno y comienza lo que contiene adentro
+            child: Row(
+              children: <Widget>[
+                SizedBox(
+                  width: 40,
+                ),
+                SizedBox(
+                  width: size.width *.5,
+                  height: size.width*.2,
+                  child: TemperatureBar(),
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                TemperatureButton(),
+              ],
+            ),
           ),
         ],
       ),
