@@ -16,7 +16,7 @@ class _MenuState extends State<Menu> {
 
   int _currentIndex = 0;
   final List<Widget> _children = [
-    HomeScreen(),
+    MyHomeScreenPage(),
     SegtoScreen(),
     FamilyScreen(),
     ProfileScreen()
