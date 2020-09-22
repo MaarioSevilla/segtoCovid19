@@ -13,7 +13,7 @@ class FamilyScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_person_add),
               title: Text('Agregar familiar'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
@@ -28,8 +28,23 @@ class FamilyScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_body),
               title: Text('Administrar familiares'),
+              trailing: Icon(Ionicons.ios_arrow_forward),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //
+                  ),
+                );
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: Icon(Icons.add),
+              title: Text('Agregar sintoma a familiar'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(

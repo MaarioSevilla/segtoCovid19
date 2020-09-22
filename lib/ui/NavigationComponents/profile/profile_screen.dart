@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(height: 13),
                   SizedBox(
                     width: size.width *1,
-                    child: Text('Sobre mi',
+                    child: Text('Mis datos',
                       textAlign: TextAlign.center,
                       style: new TextStyle(
                         fontWeight: FontWeight.bold,
@@ -36,14 +36,14 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
-              title: Text('Mis datos'),
+              leading: Icon(Ionicons.ios_clipboard),
+              title: Text('Sobre mi'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //
+                    //builder: (context) => YourNewPage(),
                   ),
                 );
               },
@@ -51,14 +51,14 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.md_people),
               title: Text('Mi circulo estudiantil'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //
+                    //builder: (context) => YourNewPage(),
                   ),
                 );
               },
@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_radio_button_off),
               title: Text('Resultado covid'),
               subtitle: Text('Negativo'),
               trailing: Icon(Ionicons.ios_arrow_forward),
@@ -74,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //
+                    //builder: (context) => YourNewPage(),
                   ),
                 );
               },
@@ -106,14 +106,14 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_contrast),
               title: Text('Tema de la app'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //
+                    //builder: (context) => YourNewPage(),
                   ),
                 );
               },
@@ -121,7 +121,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_build),
               title: Text('Lenguaje'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
@@ -136,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
           ),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
+              leading: Icon(Ionicons.ios_document),
               title: Text('Terminos y condiciones'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
