@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    //color de los iconos de la bar
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.black
+    ));
     return MaterialApp(
       title: _title,
       home: Menu(),

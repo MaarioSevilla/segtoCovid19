@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/Others/constants.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/iconSymptoms.dart';
-import 'package:segtocovid19/ui/NavigationComponents/home/summarysymtoms_button.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/symtomsdetails_button.dart';
 
-class SummarySymtoms extends StatelessWidget {
+class SymtomsWidget extends StatelessWidget {
 
-  const SummarySymtoms({
+  const SymtomsWidget({
     Key key,
   }) : super(key: key);
 
@@ -92,7 +92,7 @@ class SummarySymtoms extends StatelessWidget {
                     SizedBox(
                       height: size.width *.025,
                     ),
-                    SummarySymptomsButton(),
+                    SymptomsDetailsButton(),
                   ],
                 ),
               ),

@@ -41,6 +41,7 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
             ),
             //aqui termina el diseno y comienza lo que contiene adentro
+            //column es para abajo
             child: Column(
               children: <Widget>[
                 SizedBox(height: 10),
@@ -53,6 +54,7 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
                       color: Colors.black,
                   ),
                 ),
+                //row es para la lados
                 Row(
                   children: <Widget>[
                     SizedBox(

@@ -22,7 +22,9 @@ class TemperatureBar extends StatelessWidget {
           icon: Icon(Ionicons.ios_thermometer),
           border: InputBorder.none,
         ),
-        keyboardType: TextInputType.number,
+        keyboardType: TextInputType.numberWithOptions(decimal: true),
+        //keyboard con okay
+        //keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true)
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/Others/constants.dart';
+import 'package:segtocovid19/ui/NavigationComponents/home/iconTemperature.dart';
 
 class SummaryTemperature extends StatelessWidget {
 
@@ -9,6 +10,7 @@ class SummaryTemperature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     String _registroT1='11/09/20 08:04 p.m - 35 C';
     String _registroT2='11/09/20 08:04 p.m - 36 C';
     String _registroT3='11/09/20 08:04 p.m - 35 C';
@@ -44,6 +46,14 @@ class SummaryTemperature extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
                   children: <Widget>[
+                    SizedBox(
+                      width: size.width *.1,
+                      height: size.width*.195,
+                      child: iconTemperature(),
+                    ),
+                    SizedBox(
+                      width: size.width *.04,
+                    ),
                     Expanded(
                       child: RichText(
                         text: TextSpan(
