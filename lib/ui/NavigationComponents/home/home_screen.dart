@@ -29,59 +29,64 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          SizedBox(height: 13),
-          Container(
-            margin: EdgeInsets.only(top: 10, left: 40, bottom: 30),
-            height: 150,
-            decoration: BoxDecoration(
-              color: Color(0xffFFEDCF),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
-            ),
-            //aqui termina el diseno y comienza lo que contiene adentro
-            //column es para abajo
-            child: Column(
-              children: <Widget>[
-                SizedBox(height: 10),
-                Text(_timeString),
-                SizedBox(height: 10),
-                Text('Guarda tu temperatura de hoy',
-                  style: new TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
-                      color: Colors.black,
-                  ),
+    return GestureDetector(
+        onTap:(){
+          FocusScope.of(context).unfocus();
+        } ,
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              SizedBox(height: 13),
+              Container(
+                margin: EdgeInsets.only(top: 10, left: 40, bottom: 30),
+                height: 150,
+                decoration: BoxDecoration(
+                  color: Color(0xffFFEDCF),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
                 ),
-                //row es para la lados
-                Row(
+                //aqui termina el diseno y comienza lo que contiene adentro
+                //column es para abajo
+                child: Column(
                   children: <Widget>[
-                    SizedBox(
-                      width: size.width *.07,
+                    SizedBox(height: 10),
+                    Text(_timeString),
+                    SizedBox(height: 10),
+                    Text('Guarda tu temperatura de hoy',
+                      style: new TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16.0,
+                        color: Colors.black,
+                      ),
                     ),
-                    SizedBox(
-                      width: size.width *.5,
-                      height: size.width*.2,
-                      child: TemperatureBar(),
-                    ),
-                    SizedBox(
-                      width: size.width *.04,
-                    ),
-                    SizedBox(
-                      width: size.width *.25,
-                      child: TemperatureButton(),
+                    //row es para la lados
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                          width: size.width *.07,
+                        ),
+                        SizedBox(
+                          width: size.width *.5,
+                          height: size.width*.2,
+                          child: TemperatureBar(),
+                        ),
+                        SizedBox(
+                          width: size.width *.04,
+                        ),
+                        SizedBox(
+                          width: size.width *.25,
+                          child: TemperatureButton(),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: 10),
+              SummaryTemperature(),
+              SummarySymtoms(),
+            ],
           ),
-          SizedBox(height: 10),
-          SummaryTemperature(),
-          SummarySymtoms(),
-        ],
-      ),
+        )
     );
   }
   void _getTime() {

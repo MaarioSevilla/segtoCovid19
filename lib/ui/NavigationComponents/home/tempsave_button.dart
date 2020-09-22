@@ -16,7 +16,7 @@ class TemperatureButton extends StatelessWidget {
         ),
       ),
       onPressed: (){
-
+        FocusScope.of(context).unfocus();
       },
     );
   }

@@ -16,7 +16,7 @@ class SummarySymptomsButton extends StatelessWidget {
         ),
       ),
       onPressed: (){
-
+        print('hola');
       },
     );
   }
