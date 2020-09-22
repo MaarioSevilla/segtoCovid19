@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/Others/constants.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/iconSymptoms.dart';
-import 'package:segtocovid19/ui/NavigationComponents/segto/symtomsdetails_button.dart';
+import 'package:segtocovid19/ui/NavigationComponents/home/summarysymtoms_button.dart';
 
-class SymtomsWidget extends StatelessWidget {
+class SymtomsFamilyWidget extends StatelessWidget {
 
-  const SymtomsWidget({Key key,}) : super(key: key);
+  const SymtomsFamilyWidget({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class SymtomsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "Historial de sintomas",
+            "Historial de sintomas familiares",
             style: TextStyle(fontWeight: FontWeight.bold, color: kTextColor),
           ),
           Container(
@@ -90,7 +92,7 @@ class SymtomsWidget extends StatelessWidget {
                     SizedBox(
                       height: size.width *.025,
                     ),
-                    SymptomsDetailsButton(),
+                    SummarySymptomsButton(),
                   ],
                 ),
               ),

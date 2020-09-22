@@ -87,9 +87,11 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
   void _getTime() {
     final DateTime now = DateTime.now();
     final String formattedDateTime = _formatDateTime(now);
-    setState(() {
-      _timeString = formattedDateTime;
-    });
+    if(mounted) {
+      setState(() {
+        _timeString = formattedDateTime;
+      });
+    }
   }
   String _formatDateTime(DateTime dateTime) {
     return DateFormat('MM/dd/yyyy hh:mm:ss').format(dateTime);
