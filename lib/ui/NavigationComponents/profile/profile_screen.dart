@@ -149,6 +149,21 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
           ),
+          Card(
+            child: ListTile(
+              leading: Icon(Ionicons.ios_document),
+              title: Text('Cerrar sesón'),
+              trailing: Icon(Ionicons.ios_log_out),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
