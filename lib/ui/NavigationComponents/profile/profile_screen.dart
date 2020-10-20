@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:segtocovid19/ui/NavigationComponents/profile/resultado/resultado_screen.dart';
+import 'package:segtocovid19/ui/componentsuniversale/line.dart';
+import 'package:segtocovid19/ui/login/login_screen.dart';
+
+import 'aboutme/aboutme_screen.dart';
+import 'crudestudiantil/crudestudiantil_screen.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,12 +20,17 @@ class ProfileScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 10, left: 40, bottom: 10),
             height: 50,
             decoration: BoxDecoration(
-              color: Color(0xffFFEDCF),
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF982CAD).withOpacity(0.9),
+                  Color(0xFF530085).withOpacity(0.7),
+                ],
+              ),
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
             ),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 13),
+                  SizedBox(height: size.width *.045),
                   SizedBox(
                     width: size.width *1,
                     child: Text('Mis datos',
@@ -27,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                       style: new TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16.0,
-                        color: Colors.black,
+                        color: Color(0xffE6D9D0),
                       ),
                     ),
                   ),
@@ -43,7 +54,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //builder: (context) => YourNewPage(),
+                    builder: (context) => AboutMe(),
                   ),
                 );
               },
@@ -58,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //builder: (context) => YourNewPage(),
+                    builder: (context) => CrudEstudiantil(),
                   ),
                 );
               },
@@ -74,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //builder: (context) => YourNewPage(),
+                    builder: (context) => ResultadoCovidScreen(),
                   ),
                 );
               },
@@ -84,12 +95,17 @@ class ProfileScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 10, left: 40, bottom: 10),
             height: 50,
             decoration: BoxDecoration(
-              color: Color(0xffFFEDCF),
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF982CAD).withOpacity(0.9),
+                  Color(0xFF530085).withOpacity(0.7),
+                ],
+              ),
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
             ),
             child: Column(
               children: <Widget>[
-                SizedBox(height: 13),
+                SizedBox(height:  size.width *.045),
                 SizedBox(
                   width: size.width *1,
                   child: Text('Configuracion de la app',
@@ -97,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                     style: new TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
-                      color: Colors.black,
+                      color: Color(0xffE6D9D0),
                     ),
                   ),
                 ),
@@ -123,7 +139,6 @@ class ProfileScreen extends StatelessWidget {
             child: ListTile(
               leading: Icon(Ionicons.ios_build),
               title: Text('Lenguaje'),
-              trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(
                   context,
@@ -149,17 +164,16 @@ class ProfileScreen extends StatelessWidget {
               },
             ),
           ),
+          Line(),
           Card(
             child: ListTile(
-              leading: Icon(Ionicons.ios_document),
+              leading: Icon(Ionicons.ios_log_out),
               title: Text('Cerrar sesón'),
-              trailing: Icon(Ionicons.ios_log_out),
               onTap: () {
-                Navigator.push(
+                Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(
-                    //
-                  ),
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                      (Route<dynamic> route) => false,
                 );
               },
             ),

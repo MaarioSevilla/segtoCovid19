@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/optionsSymptom/optionsymptom_screen.dart';
 
 class SummarySymptomsButton extends StatelessWidget {
   @override
@@ -16,7 +19,7 @@ class SummarySymptomsButton extends StatelessWidget {
         ),
       ),
       onPressed: (){
-        print('hola');
+        scheduleMicrotask(() => Navigator.of(context).push(MaterialPageRoute(builder: (context) => OptionsSymptom())));
       },
     );
   }

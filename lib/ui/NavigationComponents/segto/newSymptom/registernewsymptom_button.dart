@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:segtocovid19/ui/NavigationComponents/segto/detalles_ui/detalles_screen.dart';
+import '../../../menu_screen.dart';
 
-class SymptomsDetailsButton extends StatelessWidget {
+class RegisterNewSymptomsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
@@ -11,7 +9,7 @@ class SymptomsDetailsButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
       ),
-      child: Text('Detalles',
+      child: Text('Guardar registro',
         style: new TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 14.0,
@@ -19,7 +17,12 @@ class SymptomsDetailsButton extends StatelessWidget {
         ),
       ),
       onPressed: (){
-        scheduleMicrotask(() => Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailsSymptomScreen())));
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => Menu()),
+              (Route<dynamic> route) => false,
+        );
+        //Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Menu()));
       },
     );
   }

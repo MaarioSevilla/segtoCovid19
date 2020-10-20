@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:segtocovid19/clases/datasymptom.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/optionsSymptom/components/registersymptomtitle.dart';
 
-class RUDFamily extends StatefulWidget {
-  //final Symptom symptom;
-  //AboutMe(this.symptom);
-  @override
-  _RUDFamilyState createState() => _RUDFamilyState();
-}
+import 'components/symptomsclick.dart';
 
-class _RUDFamilyState extends State<RUDFamily> {
-  //String sintoma;
-  @override
-  void initState(){
-    super.initState();
-    //sintoma = widget.symptom.sintoma;
-  }
+class OptionsSymptom extends StatelessWidget {
+
+  OptionsSymptom({Key key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Administrar familiares'),
+        title: Text('Registro de sintomas'),
         backgroundColor: Color(0xff3F005C),
       ),
       body: SingleChildScrollView(
@@ -30,6 +21,8 @@ class _RUDFamilyState extends State<RUDFamily> {
             SizedBox(
               height: size.width *.025,
             ),
+            RegisterSymptomsTitle(),
+            SymptomsClick(),
           ],
         ),
       ),

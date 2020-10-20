@@ -5,6 +5,8 @@ import 'package:segtocovid19/ui/NavigationComponents/home/home_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/profile/profile_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/segto/segto_screen.dart';
 
+import 'notifications/notifications_screen.dart';
+
 class Menu extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -29,13 +31,26 @@ class _MenuState extends State<Menu> {
         title: const Text('Segto Covid-19', style: TextStyle(
           color: Colors.white
         )),
-        backgroundColor: Color(0xffAD43F7),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Ionicons.ios_notifications),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationsScreen(),
+                ),
+              );
+            },
+          )
+        ],
+        backgroundColor: Color(0xff3F005C),
       ),
       body: _children[_currentIndex], // new
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xffD2A5F8),
-        selectedItemColor: Color(0xff000000),
-        unselectedItemColor: Color(0xff6B6966),
+        backgroundColor: Color(0xff2D0078),
+        selectedItemColor: Color(0xffE5D5CC),
+        unselectedItemColor: Color(0xffA8A8AD),
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped, // new
         currentIndex: _currentIndex, // new

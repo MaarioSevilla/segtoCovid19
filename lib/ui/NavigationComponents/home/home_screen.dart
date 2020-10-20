@@ -41,7 +41,7 @@ class _MyHomeScreenPageState extends State<MyHomeScreenPage> {
                 margin: EdgeInsets.only(top: 10, left: 40, bottom: 30),
                 height: 150,
                 decoration: BoxDecoration(
-                  color: Color(0xffFFEDCF),
+                  color: Color(0xffE8E4EE),
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
                 ),
                 //aqui termina el diseno y comienza lo que contiene adentro

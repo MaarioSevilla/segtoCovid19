@@ -37,7 +37,7 @@ class SummaryTemperature extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFFFF961F).withOpacity(0.7),
+                    Color(0xff982CAD).withOpacity(0.9),
                     kPrimaryColor.withOpacity(0.7),
                   ],
                 ),
