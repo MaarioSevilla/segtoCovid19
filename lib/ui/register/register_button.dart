@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 
-class LoginButton extends StatelessWidget {
+class RegisterButton extends StatelessWidget {
   final VoidCallback _onPressed;
 
-  LoginButton({Key key, VoidCallback onPressed})
+  RegisterButton({Key key, VoidCallback onPressed})
       : _onPressed = onPressed,
         super(key: key);
 //onPressed: _onPressed,
@@ -32,7 +32,7 @@ class LoginButton extends StatelessWidget {
             constraints: BoxConstraints(maxWidth: 400.0, minHeight: 40.0),
             alignment: Alignment.center,
             child: Text(
-              "Iniciar Sesión",
+              "Registrarse",
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.white

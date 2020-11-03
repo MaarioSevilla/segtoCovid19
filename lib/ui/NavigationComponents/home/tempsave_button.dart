@@ -4,7 +4,7 @@ class TemperatureButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
-      color: Color(0xffF39F2D),
+      color: Color(0xffFB8274),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12)
       ),

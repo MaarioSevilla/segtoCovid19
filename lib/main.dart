@@ -1,6 +1,102 @@
 import 'package:flutter/material.dart';
-import 'package:segtocovid19/ui/NavigationComponents/home/home_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:segtocovid19/ui/login/login_screen.dart';
+import 'package:segtocovid19/ui/menu_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
+      theme: ThemeData(
+          accentColor: Colors.white70
+      ),
+    );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+
+  //necesario
+  SharedPreferences sharedPreferences;
+
+  @override
+  void initState() {
+    checkLoginStatus();
+    super.initState();
+  }
+  //revisa el estado si tiene algun tokin
+  checkLoginStatus() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    if(sharedPreferences.getString("token") == null) {
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginScreen()), (Route<dynamic> route) => false);
+    }else{
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Menu()), (Route<dynamic> route) => false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    //esta sirve para prohibir la orientacion del sistema
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    //color de los iconos de la bar
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.black
+    ));
+    return Scaffold(
+      backgroundColor: Color(0xffE8E2EE),
+      body: Center(
+          child: Image.asset(
+            'images/Logo_UPP.png',
+            height: size.width *.5,
+          ),
+      ),
+    );
+  }
+}
+
+/**import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:segtocovid19/ui/login/login_screen.dart';
+import 'package:segtocovid19/ui/menu_screen.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  static const String _title = 'Flutter Code Sample';
+
+  @override
+  Widget build(BuildContext context) {
+    //esta sirve para prohibir la orientacion del sistema
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    //color de los iconos de la bar
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.black
+    ));
+    return MaterialApp(
+      home: LoginScreen(),
+    );
+  }
+}
+ **/
+/**
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -112,3 +208,4 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+**/

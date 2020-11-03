@@ -1,5 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/ui/NavigationComponents/segto/symtoms_widget.dart';
+
+import 'optionsSymptom/optionsymptom_screen.dart';
 
 class SegtoScreen extends StatefulWidget {
   SegtoScreen({Key key, this.title}) : super(key: key);
@@ -29,7 +32,8 @@ class _SegtoScreenPageState extends State<SegtoScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Add your onPressed code here!
+          //Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => RegisterSymptom()));
+          scheduleMicrotask(() => Navigator.of(context).push(MaterialPageRoute(builder: (context) => OptionsSymptom())));
         },
         child: new Icon(Icons.add, color: Colors.black,),
         backgroundColor: Color(0xffFFEDCF),

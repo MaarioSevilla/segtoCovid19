@@ -18,12 +18,15 @@ class _TemperatureBarState extends State<TemperatureBar> {
       margin: EdgeInsets.symmetric(vertical: 20),
       padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
       decoration: BoxDecoration(
-        color: Color(0xffFFF8EA),
+        color: Color(0xffF9FAFB),
         borderRadius: BorderRadius.circular(29.5),
       ),
       child: TextField(
+        maxLength: 5,
         decoration: InputDecoration(
           hintText: "Temperatura",
+          counterText: '',
+          contentPadding: EdgeInsets.all(10.0),
           hintStyle: TextStyle( color: Colors.black),
           icon: Icon(Ionicons.ios_thermometer),
           border: InputBorder.none,

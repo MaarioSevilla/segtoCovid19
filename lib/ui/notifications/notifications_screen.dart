@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/clases/datasymptom.dart';
 
-class RUDFamily extends StatefulWidget {
+class NotificationsScreen extends StatefulWidget {
   //final Symptom symptom;
   //AboutMe(this.symptom);
   @override
-  _RUDFamilyState createState() => _RUDFamilyState();
+  _NotificationsScreenState createState() => _NotificationsScreenState();
 }
 
-class _RUDFamilyState extends State<RUDFamily> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   //String sintoma;
   @override
   void initState(){
@@ -21,7 +21,7 @@ class _RUDFamilyState extends State<RUDFamily> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Administrar familiares'),
+        title: Text('Notificaciones'),
         backgroundColor: Color(0xff3F005C),
       ),
       body: SingleChildScrollView(

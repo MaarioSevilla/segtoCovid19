@@ -37,8 +37,8 @@ class SymtomsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFFFF961F).withOpacity(0.7),
-                    kPrimaryColor.withOpacity(0.7),
+                    Color(0xFF982CAD).withOpacity(0.9),
+                    Color(0xFF530085).withOpacity(0.7),
                   ],
                 ),
               ),

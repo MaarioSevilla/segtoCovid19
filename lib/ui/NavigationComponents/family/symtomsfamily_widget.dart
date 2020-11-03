@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/Others/constants.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/iconSymptoms.dart';
-import 'package:segtocovid19/ui/NavigationComponents/home/summarysymtoms_button.dart';
 
 class SymtomsFamilyWidget extends StatelessWidget {
 
@@ -40,7 +39,7 @@ class SymtomsFamilyWidget extends StatelessWidget {
                 gradient: LinearGradient(
                   colors: [
                     Color(0xFFFF961F).withOpacity(0.7),
-                    kPrimaryColor.withOpacity(0.7),
+                    Color(0xFFC027F1).withOpacity(0.7),
                   ],
                 ),
               ),
@@ -92,7 +91,22 @@ class SymtomsFamilyWidget extends StatelessWidget {
                     SizedBox(
                       height: size.width *.025,
                     ),
-                    SummarySymptomsButton(),
+                    RaisedButton(
+                      color: Color(0xffF39F2D),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)
+                      ),
+                      child: Text('Detalles',
+                        style: new TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14.0,
+                            color: Colors.white
+                        ),
+                      ),
+                      onPressed: (){
+                        print('hola');
+                      },
+                    ),
                   ],
                 ),
               ),
