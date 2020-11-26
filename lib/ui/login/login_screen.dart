@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
@@ -6,6 +8,9 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:retry/retry.dart';
+import 'package:segtocovid19/providers/globals.dart' as globals;
+import 'package:segtocovid19/Others/toast_msg.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -18,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _matriculaController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  static const serverUrl = globals.urlServer;
+  ToasMSG _toast = new ToasMSG();
 
   bool get isPopulated =>
       _matriculaController.text.isNotEmpty && _passwordController.text.isNotEmpty;
@@ -173,10 +180,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   onPressed: (){
-                    Navigator.pushAndRemoveUntil(
+                    Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => RegisterScreen()),
-                          (Route<dynamic> route) => false,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterScreen(),
+                      ),
                     );
                   },
                 ),
@@ -188,36 +196,50 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  ///funcion singin
+  //funcion singin
   signIn(String matricula, pass) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {
       'matricula': matricula,
       'password': pass
     };
-    var jsonResponse = null;
-    var response = await http.post(
-        "http://192.168.43.131:8000/api/login", body: data);
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      if (jsonResponse != null) {
+    try{
+      var jsonResponse = null;
+      String myUrl = "$serverUrl/api/login";
+      final r = RetryOptions(maxAttempts: 8);
+      var response = await r.retry(
+            () => http.post(myUrl,
+            body: data).timeout(Duration(seconds: 30)),
+        retryIf: (e) => e is SocketException || e is TimeoutException,
+      );
+      if (response.statusCode == 200) {
+        jsonResponse = json.decode(response.body);
+        print('Response status: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        if (jsonResponse != null) {
+          setState(() {
+            _isLoading = false;
+          });
+          sharedPreferences.setString("token", jsonResponse['token']);
+          sharedPreferences.setString("matricula", matricula);
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (BuildContext context) => Menu()), (
+              Route<dynamic> route) => false);
+        }
+      }
+      else {
         setState(() {
           _isLoading = false;
         });
-        sharedPreferences.setString("token", jsonResponse['token']);
-        sharedPreferences.setString("matricula", matricula);
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (BuildContext context) => Menu()), (
-            Route<dynamic> route) => false);
+        print(response.body);
       }
-    }
-    else {
-      setState(() {
-        _isLoading = false;
-      });
-      print(response.body);
+    }on SocketException {
+      print('No se pudo establecer conexion con el servidor 😑');
+      _toast.toastmsg("No se pudo establecer conexión con el servidor");
+    } on HttpException {
+      print("Couldn't find the post 😱");
+    } on FormatException {
+      print("Bad response format 👎");
     }
   }
 }

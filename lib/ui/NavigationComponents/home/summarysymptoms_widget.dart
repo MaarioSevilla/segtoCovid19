@@ -2,19 +2,88 @@ import 'package:flutter/material.dart';
 import 'package:segtocovid19/Others/constants.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/iconSymptoms.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/summarysymtoms_button.dart';
+import 'package:segtocovid19/controllers/databasehelper_aire.dart';
+import 'package:segtocovid19/controllers/databasehelper_tos.dart';
+import 'package:segtocovid19/controllers/databasehelper_sgto.dart';
 
-class SummarySymtoms extends StatelessWidget {
+class SummarySymtoms extends StatefulWidget {
+  @override
+  _SummarySymtomsState createState() => _SummarySymtomsState();
+}
 
-  const SummarySymtoms({
-    Key key,
-  }) : super(key: key);
+class _SummarySymtomsState extends State<SummarySymtoms> {
+
+  DataBaseHelperAir _helperAir = new DataBaseHelperAir();
+  DataBaseHelperTos _helperTos = new DataBaseHelperTos();
+  DataBaseHelperSgto _helperSgto = new DataBaseHelperSgto();
+
+  String _registro1='';
+  String _registro2='';
+  String _registro3='';
+  bool hola=false;
+
+
+  getDataLastTos()async{
+    var safe = await _helperTos.getDataLast();
+    if((safe).toString()!='{ok: true, data: []}'){
+      Map<String, dynamic> map = safe;
+      try{
+        List<dynamic> data = map["data"];
+        _registro1=(data[0]["fechaHora"].toString()+' - Tos');
+      }catch(e){
+        print(e);
+      }
+    }
+  }
+
+  getDataLastAir()async{
+    var safe = await _helperAir.getDataLast();
+    if((safe).toString()!='{ok: true, data: []}'){
+      Map<String, dynamic> map = safe;
+      try{
+        List<dynamic> data = map["data"];
+        if(_registro1 == null){
+          _registro1=(data[0]["fechaHora"].toString()+' - Falta de aire');
+        }else{
+          _registro2=(data[0]["fechaHora"].toString()+' - Falta de aire');
+        }
+      }catch(e){
+        print(e);
+      }
+    }
+  }
+
+  getDataLastSgto()async{
+    var safe = await _helperSgto.getDataLast();
+
+    if((safe).toString()!='{ok: true, data: []}'){
+      Map<String, dynamic> map = safe;
+      try{
+        List<dynamic> data = map["data"];
+        if(_registro1 == null){
+          _registro1=(data[0]["fechaHora"].toString()+' - '+data[0]["sintoma"].toString());
+        }else if(_registro2 == null){
+          _registro2=(data[0]["fechaHora"].toString()+' - '+data[0]["sintoma"].toString());
+        }else{
+          _registro3=(data[0]["fechaHora"].toString()+' - '+data[0]["sintoma"].toString());
+        }
+      }catch(e){
+        print(e);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    this.getDataLastTos();
+    this.getDataLastAir();
+    this.getDataLastSgto();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    String _registro1='11/09/20 08:04 p.m - Tos seca';
-    String _registro2='11/09/20 08:04 p.m - Tos seca';
-    String _registro3='11/09/20 08:04 p.m - Tos seca';
     return Padding(
       //margen de espacio en blanco a la derecha e izquierda
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -30,7 +99,7 @@ class SummarySymtoms extends StatelessWidget {
             margin: EdgeInsets.symmetric(vertical: 20),
             width: double.infinity,
             //largo del cuadro contenedor
-            height: 196,
+            height: 207,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -90,7 +159,7 @@ class SummarySymtoms extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: size.width *.025,
+                      height: size.width *.01,
                     ),
                     SummarySymptomsButton(),
                   ],

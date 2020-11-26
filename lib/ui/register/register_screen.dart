@@ -1,11 +1,9 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:segtocovid19/controllers/databasehelpers.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 import 'package:segtocovid19/ui/register/cancel_button.dart';
-import 'package:segtocovid19/ui/register/register_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -49,6 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: ListView(
             children: <Widget>[
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Column(
                       children: <Widget>[
@@ -61,9 +60,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                       ],
-                  ),
-                  SizedBox(
-                    width: size.width *.33,
                   ),
                   SizedBox(
                     width: size.width *.25,

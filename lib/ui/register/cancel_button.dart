@@ -25,11 +25,7 @@ class CancelButton extends StatelessWidget {
           ),
         ),
         onPressed: (){
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => LoginScreen()),
-                (Route<dynamic> route) => false,
-          );
+          Navigator.pop(context);
         },
       ),
     );

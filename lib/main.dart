@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:segtocovid19/providers/conex_provider.dart';
 import 'package:segtocovid19/ui/login/login_screen.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  ConnectionStatusSingleton connectionStatus = ConnectionStatusSingleton.getInstance();
+  connectionStatus.initialize();
+
+  runApp(MyApp());
+
+}
 
 class MyApp extends StatelessWidget {
   @override

@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:segtocovid19/ui/NavigationComponents/family/RUD/rudfamily_screen.dart';
-import 'package:segtocovid19/ui/NavigationComponents/family/addSymptomFam/addsymptomfamily_screen.dart';
+import 'package:segtocovid19/ui/NavigationComponents/family/addSymptomFam/familymembers_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/family/register/registerfamily_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/family/symtomsfamily_widget.dart';
-class FamilyScreen extends StatelessWidget {
+
+class FamilyScreen extends StatefulWidget {
+  @override
+  _FamilyScreenState createState() => _FamilyScreenState();
+}
+
+class _FamilyScreenState extends State<FamilyScreen> {
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -53,17 +61,17 @@ class FamilyScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddSymptomFamily(),
+                    builder: (context) => FamilyMembersSelect(),
                   ),
                 );
               },
             ),
           ),
-
           SizedBox(
             height: size.width *.025,
           ),
           SymtomsFamilyWidget(),
+          SizedBox(height: 10),
         ],
       ),
     );

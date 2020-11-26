@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:segtocovid19/ui/NavigationComponents/segto/optionsSymptom/components/registersymptomtitle.dart';
-
 import 'components/symptomsclick.dart';
 
 class OptionsSymptom extends StatelessWidget {

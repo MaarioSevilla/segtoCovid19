@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:segtocovid19/clases/datasymptom.dart';
-import 'package:segtocovid19/ui/NavigationComponents/segto/newSymptom/registernewsymptom_button.dart';
+import 'package:segtocovid19/controllers/databasehelper_aire.dart';
+import 'package:segtocovid19/controllers/databasehelper_sgto.dart';
+import 'package:segtocovid19/controllers/databasehelper_tos.dart';
 
 class CustomPicker extends CommonPickerModel {
   String digits(int value, int length) {
@@ -79,6 +82,11 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
   int _value = 1;
   String _date = "Not set";
   String _time = "Not set";
+  String dateAndTime, _valueReal;
+  String _day, _month,_year, _hours,_second, _minute;
+  DataBaseHelperSgto _helperSgto = new DataBaseHelperSgto();
+  DataBaseHelperAir _helperAir = new DataBaseHelperAir();
+  DataBaseHelperTos _helperTos = new DataBaseHelperTos();
 
   @override
   void initState(){
@@ -89,11 +97,16 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    final Shader linearGradient = LinearGradient(
+      colors: <Color>[Color(0xffDA44bb), Color(0xffFB243A)],
+    ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Registro de sintoma'),
         backgroundColor: Color(0xff3F005C),
       ),
+      backgroundColor: Color(0xffE8E2EE),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -102,7 +115,7 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
             ),
             Container(
               margin: EdgeInsets.only(top: 10, left: 40, bottom: 10),
-              height: 50,
+              height: 60,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -110,55 +123,43 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                     Color(0xFF530085).withOpacity(0.7),
                   ],
                 ),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30)),
               ),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: size.width *.045),
+                  SizedBox(height: size.width *.05),
                   SizedBox(
                     width: size.width *1,
                     child: Text("$sintoma",
                       textAlign: TextAlign.center,
                       style: new TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                        color: Color(0xffE6D9D0),
+                          fontSize: ResponsiveFlutter.of(context).fontSize(2),
+                          fontWeight: FontWeight.bold,
+                        color: Color(0xffFBFBFB),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            Text('Gravedad'),
-            DropdownButton(
-            value: _value,
-            items: [
-              DropdownMenuItem(
-                child: Text("Ninguna"),
-                value: 1,
+            SizedBox(
+              height: size.width *.05,
+            ),
+            Text('Seleciona la fecha y hora',
+              textAlign: TextAlign.left,
+              style: new TextStyle(
+                  fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()..shader = linearGradient
               ),
-              DropdownMenuItem(
-                child: Text("Leve"),
-                value: 2,
-              ),
-              DropdownMenuItem(
-                  child: Text("Moderada"),
-                  value: 3
-              ),
-              DropdownMenuItem(
-                  child: Text("Grave"),
-                  value: 4
-              )
-            ],
-            onChanged: (value) {
-              setState(() {
-                _value = value;
-              });
-            }),
+            ),
+            SizedBox(
+              height: size.width *.05,
+            ),
             RaisedButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0)),
-              elevation: 4.0,
+              elevation: 0.0,
               onPressed: () {
                 DatePicker.showDatePicker(context,
                     theme: DatePickerTheme(
@@ -169,6 +170,17 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                     maxTime: DateTime(2022, 12, 31), onConfirm: (date) {
                       print('confirm $date');
                       _date = '${date.year} - ${date.month} - ${date.day}';
+                      _year='${date.year}';
+                      if(date.month<10){
+                        _month='0${date.month}';
+                      }else{
+                        _month='${date.month}';
+                      }
+                      if(date.day<10){
+                        _day='0${date.day}';
+                      }else{
+                        _day='${date.day}';
+                      }
                       setState(() {});
                     }, currentTime: DateTime.now(), locale: LocaleType.es);
               },
@@ -186,12 +198,12 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                               Icon(
                                 Icons.date_range,
                                 size: 18.0,
-                                color: Colors.teal,
+                                color: Colors.purple,
                               ),
                               Text(
                                 " $_date",
                                 style: TextStyle(
-                                    color: Colors.teal,
+                                    color: Color(0xff616161),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18.0),
                               ),
@@ -203,7 +215,7 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                     Text(
                       "  Cambiar",
                       style: TextStyle(
-                          color: Colors.teal,
+                          color: Color(0xFF982CAD).withOpacity(0.9),
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
@@ -218,7 +230,7 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
             RaisedButton(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0)),
-              elevation: 4.0,
+              elevation: 0.0,
               onPressed: () {
                 DatePicker.showTimePicker(context,
                     theme: DatePickerTheme(
@@ -226,7 +238,23 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                     ),
                     showTitleActions: true, onConfirm: (time) {
                       print('confirm $time');
+                      print('confirm ${time.hour}');
                       _time = '${time.hour} : ${time.minute} : ${time.second}';
+                      if(time.hour<10){
+                        _hours='0${time.hour}';
+                      }else{
+                        _hours='${time.hour}';
+                      }
+                      if(time.minute<10){
+                        _minute='0${time.minute}';
+                      }else{
+                        _minute='${time.minute}';
+                      }
+                      if(time.second<10){
+                        _second='0${time.second}';
+                      }else{
+                        _second='${time.second}';
+                      }
                       setState(() {});
                     }, currentTime: DateTime.now(), locale: LocaleType.es);
                 setState(() {});
@@ -245,12 +273,12 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                               Icon(
                                 Icons.access_time,
                                 size: 18.0,
-                                color: Colors.teal,
+                                color: Colors.purple,
                               ),
                               Text(
                                 " $_time",
                                 style: TextStyle(
-                                    color: Colors.teal,
+                                    color: Color(0xff616161),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18.0),
                               ),
@@ -262,7 +290,7 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
                     Text(
                       "  Cambiar",
                       style: TextStyle(
-                          color: Colors.teal,
+                          color: Color(0xFF982CAD).withOpacity(0.9),
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0),
                     ),
@@ -272,9 +300,140 @@ class _RegisterNewSymptomState extends State<RegisterNewSymptom> {
               color: Colors.white,
             ),
             SizedBox(
+              height: size.width *.05,
+            ),
+            Text('Seleciona la gravedad del sintoma',
+              style: new TextStyle(
+                  fontSize: ResponsiveFlutter.of(context).fontSize(2.2),
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()..shader = linearGradient
+              ),
+            ),
+            SizedBox(
+              height: size.width *.05,
+            ),
+            Container(
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xffFFFFFF).withOpacity(0.7),
+                    Color(0xffFFFFFF).withOpacity(0.7),
+                  ],
+                ),
+              ),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  value: _value,
+                  items: [
+                    DropdownMenuItem(
+                      child: Text('Ninguna',
+                        style: new TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF982CAD).withOpacity(0.9),
+                        ),
+                      ),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("Leve",
+                        style: new TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF982CAD).withOpacity(0.9),
+                        ),
+                      ),
+                      value: 2,
+                    ),
+                    DropdownMenuItem(
+                        child: Text("Moderada",
+                          style: new TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF982CAD).withOpacity(0.9),
+                          ),
+                        ),
+                        value: 3
+                    ),
+                    DropdownMenuItem(
+                        child: Text("Grave",
+                          style: new TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF982CAD).withOpacity(0.9),
+                          ),
+                        ),
+                        value: 4
+                    )
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _value = value;
+                      print(_value);
+                    });
+                  },
+                  isExpanded: true,
+                ),
+              ),
+            ),
+            SizedBox(
               height: size.width *.025,
             ),
-            RegisterNewSymptomsButton(),
+            Container(
+              margin: EdgeInsets.only(top: 0, right: 2, left: 2, bottom: 20),
+              alignment: Alignment.center,
+              constraints: BoxConstraints(maxWidth: 400.0, minHeight: 90.0),
+              child: FlatButton(
+                color: Color(0xffFB8274),
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                splashColor: Color(0xff3F005C),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Text("Guardar registro",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: ResponsiveFlutter.of(context).fontSize(1.6),
+                    color: Colors.white,
+                  ),
+                ),
+                onPressed: () async {
+                  if(_date=="Not set" || _time=="Not set"){
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Alerta'),
+                        content: Text('Seleccione la fecha y la hora'),
+                      ),
+                    );
+                  }else{
+                    ///asignacion del valor real del select gravedad
+                    if(_value==1){
+                      _valueReal="ninguno";
+                    }else if(_value==2){
+                      _valueReal="leve";
+                    }else if(_value==3){
+                      _valueReal="moderada";
+                    }else if(_value==4){
+                      _valueReal="grave";
+                    }
+                    ///asignacion de la fecha
+                    dateAndTime=('$_year-$_month-$_day $_hours:$_minute:$_second');
+                    print(dateAndTime);
+                    ///verificar en cual tabla se guardara el nuevo registro
+                    if(sintoma=="Tos seca"){
+                      print("table tos");
+                      await _helperTos.addDataTos(_valueReal, dateAndTime);
+                    }else if(sintoma=="Dificultad para respirar"){
+                      print("table aire");
+                      await _helperAir.addDataAir(_valueReal, dateAndTime);
+                    }else{
+                      print("table sgto");
+                      await _helperSgto.addDataSymptom(sintoma, _valueReal, dateAndTime);
+                    }
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

@@ -1,7 +1,19 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:segtocovid19/ui/NavigationComponents/segto/symtoms_widget.dart';
-
+import 'package:segtocovid19/Others/constants.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_air_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_bother_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_chest_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_conjuntivitis_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_diarrea_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_fever_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_headache_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_move_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_pain_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_rash_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_smell_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_tiredness_widget.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/widgets_sgto/symptom_tos_widget.dart';
 import 'optionsSymptom/optionsymptom_screen.dart';
 
 class SegtoScreen extends StatefulWidget {
@@ -22,11 +34,26 @@ class _SegtoScreenPageState extends State<SegtoScreen> {
             SizedBox(
               height: size.width *.07,
             ),
-            SymtomsWidget(),
-            SymtomsWidget(),
-            SymtomsWidget(),
-            SymtomsWidget(),
-            SymtomsWidget(),
+            Text(
+              "Historial de sintomas",
+              style: TextStyle(fontWeight: FontWeight.bold, color: kTextColor),
+            ),
+            SizedBox(
+              height: size.width*.03,
+            ),
+            SymtomsFeverWidget(),
+            SymtomsTosWidget(),
+            SymtomsAirWidget(),
+            SymtomsCansancioWidget(),
+            SymtomsMolestiasWidget(),
+            SymtomsPainGargantaWidget(),
+            SymtomsDiarreaWidget(),
+            SymtomsConjuntivitisWidget(),
+            SymtomsHeadacheWidget(),
+            SymtomsSmellWidget(),
+            SymtomsRashWidget(),
+            SymtomsPechoWidget(),
+            SymtomsMoveWidget(),
           ],
         ),
       ),

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:grouped_buttons/grouped_buttons.dart';
-import 'package:segtocovid19/Others/constants.dart';
 import 'package:segtocovid19/clases/datasymptom.dart';
-import 'package:segtocovid19/ui/NavigationComponents/home/iconSymptoms.dart';
 import 'package:segtocovid19/ui/NavigationComponents/segto/newSymptom/registesymptom_screen.dart';
-import 'package:segtocovid19/ui/menu_screen.dart';
 
 class SymptomsClick extends StatefulWidget{
   @override
@@ -14,7 +10,6 @@ class SymptomsClick extends StatefulWidget{
 
 class _SymptomsClickState extends State<SymptomsClick>{
   String sintomas;
-  String tos='tos';
   var symptom;
 
   @override
@@ -38,8 +33,8 @@ class _SymptomsClickState extends State<SymptomsClick>{
             ),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(29),
-                color: const Color(0xffD9DFDF),
+                borderRadius: BorderRadius.circular(18),
+                color: const Color(0xffE8E4EE),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(0.0),
@@ -47,14 +42,14 @@ class _SymptomsClickState extends State<SymptomsClick>{
                 child: Column(
                   children: <Widget>[
                     SizedBox(
-                      height: size.width *.05,
+                      height: size.width *.02,
                     ),
                     Card(
                       child: ListTile(
                         title: Text('Tos seca'),
                         trailing: Icon(Ionicons.ios_arrow_forward),
                         onTap: () async {
-                          sintomas = tos;
+                          sintomas = 'Tos seca';
                           symptom = new Symptom();
                           symptom.sintoma = sintomas;
                           Navigator.of(context).push(
@@ -81,23 +76,165 @@ class _SymptomsClickState extends State<SymptomsClick>{
                         },
                       ),
                     ),
-                    CheckboxGroup(
-                      labels: <String>[
-                        "Tos seca",
-                        "Cansancio",
-                        "Molestias y dolores",
-                        "Dolor de garganta",
-                        "Diarrea",
-                        "Conjuntivitis",
-                        "Dolor de cabeza",
-                        "Pérdida del sentido del olfato",
-                        "Erupciones cutáneas",
-                        "Dificultad para respirar",
-                        "Dolor o presión en el pecho",
-                        "Incapacidad para hablar o moverse",
-                      ],
-                      onChange: (bool isChecked, String label, int index) => print("isChecked: $isChecked   label: $label  index: $index"),
-                      onSelected: (List<String> checked) => print("checked: ${checked.toString()}"),
+                    Card(
+                      child: ListTile(
+                        title: Text('Molestias y dolores'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Molestias y dolores';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Dolor de garganta'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Dolor de garganta';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Diarrea'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Diarrea';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Conjuntivitis'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Conjuntivitis';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Dolor de cabeza'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Dolor de cabeza';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Pérdida del sentido del olfato'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Pérdida del sentido del olfato';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Erupciones cutáneas'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Erupciones cutáneas';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Dificultad para respirar'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Dificultad para respirar';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Dolor o presión en el pecho'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Dolor o presión en el pecho';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: ListTile(
+                        title: Text('Incapacidad para hablar o moverse'),
+                        trailing: Icon(Ionicons.ios_arrow_forward),
+                        onTap: () async {
+                          sintomas = 'Incapacidad para hablar o moverse';
+                          symptom = new Symptom();
+                          symptom.sintoma = sintomas;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => RegisterNewSymptom(symptom),
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

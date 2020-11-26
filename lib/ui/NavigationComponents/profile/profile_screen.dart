@@ -6,6 +6,8 @@ import 'package:segtocovid19/ui/login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'aboutme/aboutme_screen.dart';
 import 'crudestudiantil/crudestudiantil_screen.dart';
+import 'crudestudiantil/newgroup_screen.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -148,7 +150,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //builder: (context) => YourNewPage(),
+                    builder: (context) => RegisterNewGroup(),
                   ),
                 );
               },
@@ -173,14 +175,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               leading: Icon(Ionicons.ios_document),
               title: Text('Terminos y condiciones'),
               trailing: Icon(Ionicons.ios_arrow_forward),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    //
-                  ),
-                );
-              },
+              onTap: () async {
+
+                },
             ),
           ),
           Line(),

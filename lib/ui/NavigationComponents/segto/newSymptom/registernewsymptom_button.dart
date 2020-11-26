@@ -17,11 +17,7 @@ class RegisterNewSymptomsButton extends StatelessWidget {
         ),
       ),
       onPressed: (){
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => Menu()),
-              (Route<dynamic> route) => false,
-        );
+        //Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Menu()), (Route<dynamic> route) => false,);
         //Navigator.pushReplacement(context, MaterialPageRoute(builder: (c) => Menu()));
       },
     );

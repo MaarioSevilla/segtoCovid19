@@ -34,5 +34,4 @@ class RegisterSymptomsTitle extends StatelessWidget {
       ),
     );
   }
-
 }
