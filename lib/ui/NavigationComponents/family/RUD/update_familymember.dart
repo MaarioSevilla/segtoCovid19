@@ -1,6 +1,4 @@
 import 'package:segtocovid19/controllers/databasehelper_family.dart';
-import 'package:segtocovid19/controllers/databasehelpers.dart';
-import 'package:segtocovid19/view/listProducts.dart';
 import 'package:flutter/material.dart';
 
 

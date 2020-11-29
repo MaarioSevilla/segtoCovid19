@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:segtocovid19/ui/NavigationComponents/family/addSymptomFam/optionssymptomfamily_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:segtocovid19/providers/globals.dart' as globals;
 
 class FamilySymtomsAll extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _FamilySymtomsAllState extends State<FamilySymtomsAll> {
 
   List data;
   String _matricula;
+  static const serverUrl = globals.urlServer;
   SharedPreferences sharedPreferences;
 
   Future<List> getData() async {
@@ -23,7 +25,7 @@ class _FamilySymtomsAllState extends State<FamilySymtomsAll> {
     }else{
       _matricula=sharedPreferences.getString("matricula");
     }
-    final response = await http.get("http://192.168.43.131:8000/api/sgtofamily/myfamily/$_matricula");
+    final response = await http.get("$serverUrl/api/sgtofamily/myfamily/$_matricula");
     Map<String, dynamic> map = json.decode(response.body);
     List<dynamic> data = map["data"];
     return data;

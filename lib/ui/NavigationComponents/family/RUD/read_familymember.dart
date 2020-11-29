@@ -20,10 +20,10 @@ class _FamilyMemberState extends State<FamilyMember> {
   //create function delete
   void confirm (){
     AlertDialog alertDialog = new AlertDialog(
-      content: new Text("Esta seguto de eliminar '${widget.list[widget.index]['nombreF']}'"),
+      content: new Text("Esta seguro de eliminar '${widget.list[widget.index]['nombreF']}'"),
       actions: <Widget>[
         new RaisedButton(
-          child: new Text("OK remove!",style: new TextStyle(color: Colors.black),),
+          child: new Text("OK remove!",style: new TextStyle(color: Colors.white),),
           color: Colors.red,
           onPressed: (){
             databaseHelper.removeRegister(widget.list[widget.index]['idFamiliar'].toString());
@@ -31,7 +31,7 @@ class _FamilyMemberState extends State<FamilyMember> {
           },
         ),
         new RaisedButton(
-          child: new Text("CANCEL",style: new TextStyle(color: Colors.black)),
+          child: new Text("CANCELAR",style: new TextStyle(color: Colors.white)),
           color: Colors.green,
           onPressed: ()=> Navigator.pop(context),
         ),
@@ -66,7 +66,7 @@ class _FamilyMemberState extends State<FamilyMember> {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     new RaisedButton(
-                      child: new Text("Editar"),
+                      child: new Text("Editar",style: TextStyle(color: Colors.white)),
                       color: Colors.purple,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0)),
@@ -78,7 +78,7 @@ class _FamilyMemberState extends State<FamilyMember> {
                     ),
                     VerticalDivider(),
                     new RaisedButton(
-                      child: new Text("Delete"),
+                      child: new Text("Delete",style: TextStyle(color: Colors.white)),
                       color: Colors.redAccent,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30.0)),

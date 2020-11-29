@@ -100,7 +100,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: ListTile(
               leading: Icon(Ionicons.ios_radio_button_off),
               title: Text('Resultado covid'),
-              subtitle: Text('Negativo'),
               trailing: Icon(Ionicons.ios_arrow_forward),
               onTap: () {
                 Navigator.push(
@@ -161,12 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               leading: Icon(Ionicons.ios_build),
               title: Text('Lenguaje'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    //
-                  ),
-                );
+
               },
             ),
           ),
@@ -187,7 +181,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: Text('Cerrar sesón'),
               onTap: () {
                 sharedPreferences.clear();
-                sharedPreferences.commit();
                 Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
                         (Route<dynamic> route) => false);

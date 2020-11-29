@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:http/http.dart' as http;
 import 'package:segtocovid19/clases/datasymptom.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/detalles_ui/update/read_symptoms_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/controllers/databasehelper_sgto.dart';
+import 'package:segtocovid19/providers/globals.dart' as globals;
 
 class DetailsSymptomScreen extends StatefulWidget {
-  final Symptom symptom;
+  Symptom symptom;
   DetailsSymptomScreen(this.symptom);
   @override
   _DetailsSymptomScreenState createState() => _DetailsSymptomScreenState();
@@ -34,6 +36,7 @@ class _DetailsSymptomScreenState extends State<DetailsSymptomScreen> {
   @override
   void initState() {
     sintoma = widget.symptom.sintoma;
+    globals.sintomaG = sintoma;
     this.getData();
     super.initState();
   }
@@ -65,6 +68,7 @@ class _DetailsSymptomScreenState extends State<DetailsSymptomScreen> {
 class ItemList extends StatelessWidget {
   final List list;
   ItemList({this.list});
+  var symptom;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +82,13 @@ class ItemList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5.0)),
             elevation: 0.0,
             onPressed: () {
-
+              Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => new ReadSymtom(
+                      list: list,
+                      index: i,
+                    )),
+              );
             },
             child: new Container(
               alignment: Alignment.center,

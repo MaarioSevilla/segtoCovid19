@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/Others/toast_msg.dart';
-import 'package:segtocovid19/providers/status_provider.dart';
 import 'package:segtocovid19/providers/globals.dart' as globals;
 
 class DataBaseHelperFamily {

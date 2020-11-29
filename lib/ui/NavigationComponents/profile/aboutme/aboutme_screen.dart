@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:segtocovid19/clases/user_class.dart';
 import 'package:segtocovid19/controllers/databasehelper_user.dart';
+import 'package:segtocovid19/ui/NavigationComponents/profile/aboutme/updateme_screen.dart';
 
 class AboutMe extends StatefulWidget {
   @override
@@ -11,8 +13,8 @@ class _AboutMeState extends State<AboutMe> {
 
   DataBaseHelperUser _helperUser = new DataBaseHelperUser();
   bool hola =false;
-  String image;
   String nombre,apellido,correo,matricula;
+  var user;
 
   loadDataUser() async {
     var safe = await _helperUser.getDataUser();
@@ -204,8 +206,20 @@ class _AboutMeState extends State<AboutMe> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15.0)),
                                 color: Color(0xffFB8274),
-                                onPressed: () {
-
+                                onPressed: () async {
+                                  user = new User();
+                                  user.matricula = matricula;
+                                  user.email = matricula;
+                                  user.password = matricula;
+                                  user.nombre = matricula;
+                                  user.apellido = matricula;
+                                  user.apellidoII = matricula;
+                                  user.tipoUsuario = matricula;
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) => UpdateMe()
+                                    ),
+                                  );
                                 },
                                 child: Text(
                                   "Actualizar datos",
