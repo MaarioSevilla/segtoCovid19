@@ -7,7 +7,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/Others/toast_msg.dart';
 import 'package:segtocovid19/providers/status_provider.dart';
 import 'package:segtocovid19/providers/globals.dart' as globals;
-import 'package:segtocovid19/clases/circle_class.dart';
 
 class DataBaseHelperCircle {
 
@@ -98,29 +97,6 @@ class DataBaseHelperCircle {
         _toast.toastmsg("Se ha eliminado con exito");
       }
     });
-  }
-
-  Future<List<Circle>> getCircle() async {
-    StatusProvider _statusProvider = new StatusProvider();
-    String _matricula = _statusProvider.checkLoginStatus();
-    print('prueba resultado $_matricula');
-    String myUrl;
-
-    myUrl = "$serverUrl/api/circulo/cebyid/$_matricula";
-
-    try {
-      final response = await http.get(myUrl);
-      print('getEmployees Response: ${response.body}');
-      if (200 == response.statusCode) {
-        var parsed = json.decode(response.body);
-        List jsonResponse = parsed["data"] as List;
-        return jsonResponse.map((job) => new Circle.fromJson(job)).toList();
-      } else {
-        return List<Circle>();
-      }
-    } catch (e) {
-      return List<Circle>(); // return an empty list on exception/error
-    }
   }
 
   getAllData() async {

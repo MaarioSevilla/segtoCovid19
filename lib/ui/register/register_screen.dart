@@ -97,10 +97,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     counterText: '',
                     contentPadding: EdgeInsets.all(10.0),
                     hintStyle: TextStyle( color: Colors.black),
-                    icon: Icon(Icons.bubble_chart),
+                    icon: Icon(Icons.lock),
                     border: InputBorder.none,
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   //keyboard con okay
                   //keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true)
                 ),
@@ -114,13 +113,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 child: TextField(
                   controller: _passwordController,
-                  maxLength: 225,
+                  maxLength: 50,
                   decoration: InputDecoration(
                     hintText: "Contraseña",
                     counterText: '',
                     contentPadding: EdgeInsets.all(10.0),
                     hintStyle: TextStyle( color: Colors.black),
-                    icon: Icon(Icons.lock),
+                    icon: Icon(Icons.vpn_key),
                     border: InputBorder.none,
                   ),
                   obscureText: true,
@@ -167,10 +166,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     counterText: '',
                     contentPadding: EdgeInsets.all(10.0),
                     hintStyle: TextStyle( color: Colors.black),
-                    icon: Icon(Icons.email),
+                    icon: Icon(Icons.person),
                     border: InputBorder.none,
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   //keyboard con okay
                   //keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true)
                 ),
@@ -190,10 +188,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     counterText: '',
                     contentPadding: EdgeInsets.all(10.0),
                     hintStyle: TextStyle( color: Colors.black),
-                    icon: Icon(Icons.email),
+                    icon: Icon(Icons.bubble_chart),
                     border: InputBorder.none,
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   //keyboard con okay
                   //keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true)
                 ),
@@ -213,10 +210,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     counterText: '',
                     contentPadding: EdgeInsets.all(10.0),
                     hintStyle: TextStyle( color: Colors.black),
-                    icon: Icon(Icons.email),
+                    icon: Icon(Icons.bubble_chart),
                     border: InputBorder.none,
                   ),
-                  keyboardType: TextInputType.emailAddress,
                   //keyboard con okay
                   //keyboardType: TextInputType.numberWithOptions(signed: true, decimal: true)
                 ),

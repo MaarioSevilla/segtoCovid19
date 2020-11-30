@@ -42,6 +42,132 @@ class DataBaseHelperUser {
     }
   }
 
+  editaDataUser(String _matricula, String _pass, String _email, String _nombre, String _apellido, String _apellidoII, String _tipoUsuario) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {
+      'matricula': _matricula,
+      'password': _pass
+    };
+    try{
+      var jsonResponse;
+      String myUrl = "$serverUrl/api/login";
+      final r = RetryOptions(maxAttempts: 8);
+      var response = await r.retry(
+            () => http.post(myUrl,
+            body: data).timeout(Duration(seconds: 30)),
+        retryIf: (e) => e is SocketException || e is TimeoutException,
+      );
+      //si all sale bien
+      if (response.statusCode == 200) {
+        jsonResponse = json.decode(response.body);
+        final value = jsonResponse['token'];
+        sharedPreferences.setString("token", jsonResponse['token']);
+        print('Response status: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        if (jsonResponse != null) {
+          //funcio de actualizar
+          //si devuelve token
+          String myUrl = "$serverUrl/api/user/$_matricula";
+          http.put(myUrl,
+              headers: {
+                'Accept':'application/json',
+                'Authorization' : 'Bearer $value'
+              },
+              body: {
+                "matricula":        "$_matricula",
+                "email":        "$_email",
+                "password":      "$_pass",
+                "nombre":      "$_nombre",
+                "apellido":      "$_apellido",
+                "apellidoII":      "$_apellidoII",
+                "tipoUsuario":      "$_tipoUsuario"
+              }).then((response){
+            print('Response status : ${response.statusCode}');
+            print('Response body : ${response.body}');
+            if (response.statusCode == 200) {
+              _toast.toastmsg("Se ha actualizado con exito");
+            }
+          });
+          //termina funcion de actualizar
+        }
+      }
+      //si no sale bien
+      else {
+        _toast.toastmsg("Algo salio mal revisa tu password");
+      }
+    }on SocketException {
+      print('No se pudo establecer conexion con el servidor 😑');
+      _toast.toastmsg("No se pudo establecer conexión con el servidor");
+    } on HttpException {
+      print("Couldn't find the post 😱");
+    } on FormatException {
+      print("Bad response format 👎");
+    }
+  }
+
+  changePassUser(String _matricula, String _oldpass, String _newpass, String _email, String _nombre, String _apellido, String _apellidoII, String _tipoUsuario) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    Map data = {
+      'matricula': _matricula,
+      'password': _oldpass
+    };
+    try{
+      var jsonResponse;
+      String myUrl = "$serverUrl/api/login";
+      final r = RetryOptions(maxAttempts: 8);
+      var response = await r.retry(
+            () => http.post(myUrl,
+            body: data).timeout(Duration(seconds: 30)),
+        retryIf: (e) => e is SocketException || e is TimeoutException,
+      );
+      //si all sale bien
+      if (response.statusCode == 200) {
+        jsonResponse = json.decode(response.body);
+        final value = jsonResponse['token'];
+        sharedPreferences.setString("token", jsonResponse['token']);
+        print('Response status: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        if (jsonResponse != null) {
+          //funcio de actualizar
+          //si devuelve token
+          String myUrl = "$serverUrl/api/user/$_matricula";
+          http.put(myUrl,
+              headers: {
+                'Accept':'application/json',
+                'Authorization' : 'Bearer $value'
+              },
+              body: {
+                "matricula":        "$_matricula",
+                "email":        "$_email",
+                "password":      "$_newpass",
+                "nombre":      "$_nombre",
+                "apellido":      "$_apellido",
+                "apellidoII":      "$_apellidoII",
+                "tipoUsuario":      "$_tipoUsuario"
+              }).then((response){
+            print('Response status : ${response.statusCode}');
+            print('Response body : ${response.body}');
+            if (response.statusCode == 200) {
+              _toast.toastmsg("Se ha actualizado con exito");
+            }
+          });
+          //termina funcion de actualizar
+        }
+      }
+      //si no sale bien
+      else {
+        _toast.toastmsg("Algo salio mal revisa tu password");
+      }
+    }on SocketException {
+      print('No se pudo establecer conexion con el servidor 😑');
+      _toast.toastmsg("No se pudo establecer conexión con el servidor");
+    } on HttpException {
+      print("Couldn't find the post 😱");
+    } on FormatException {
+      print("Bad response format 👎");
+    }
+  }
+
   getResulCovid() async {
     String _matricula = await _statusProvider.checkLoginStatus();
     print('prueba resultado $_matricula');

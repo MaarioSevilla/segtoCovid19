@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:segtocovid19/clases/datasymptom.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/controllers/databasehelper_family.dart';
 
@@ -42,8 +38,6 @@ class _RegisterFamilyScrenState extends State<RegisterFamilyScren> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var matricula;
     return Scaffold(
       appBar: AppBar(
         title: Text('Registrar familiar'),
@@ -70,7 +64,7 @@ class _RegisterFamilyScrenState extends State<RegisterFamilyScren> {
                         counterText: '',
                         contentPadding: EdgeInsets.all(10.0),
                         hintStyle: TextStyle( color: Colors.black),
-                        icon: Icon(Icons.bubble_chart),
+                        icon: Icon(Icons.perm_contact_calendar),
                         border: InputBorder.none,
                       ),
                       //keyboard con okay
@@ -92,7 +86,7 @@ class _RegisterFamilyScrenState extends State<RegisterFamilyScren> {
                         counterText: '',
                         contentPadding: EdgeInsets.all(10.0),
                         hintStyle: TextStyle( color: Colors.black),
-                        icon: Icon(Icons.email),
+                        icon: Icon(Icons.person),
                         border: InputBorder.none,
                       ),
                       //keyboard con okay
@@ -113,7 +107,7 @@ class _RegisterFamilyScrenState extends State<RegisterFamilyScren> {
                         counterText: '',
                         contentPadding: EdgeInsets.all(10.0),
                         hintStyle: TextStyle( color: Colors.black),
-                        icon: Icon(Icons.email),
+                        icon: Icon(Icons.bubble_chart),
                         border: InputBorder.none,
                       ),
                       keyboardType: TextInputType.text,
@@ -136,7 +130,7 @@ class _RegisterFamilyScrenState extends State<RegisterFamilyScren> {
                         counterText: '',
                         contentPadding: EdgeInsets.all(10.0),
                         hintStyle: TextStyle( color: Colors.black),
-                        icon: Icon(Icons.email),
+                        icon: Icon(Icons.bubble_chart),
                         border: InputBorder.none,
                       ),
                       //keyboard con okay

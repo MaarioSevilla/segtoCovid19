@@ -89,6 +89,53 @@ class DataBaseHelperSgtoFamily {
     }
   }
 
+  //function for update or put
+  void editarData(String idSgtoF, String _idsFamiliar, String _sintomaF, String _gravedadF, String _fechaHoraF, String _notaF) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = prefs.get(key) ?? 0;
+
+    String myUrl = "$serverUrl/api/sgtofamily/$idSgtoF";
+    http.put(myUrl,
+        headers: {
+          'Accept':'application/json',
+          'Authorization' : 'Bearer $value'
+        },
+        body: {
+          "idsFamiliar": "$_idsFamiliar",
+          "sintomaF": "$_sintomaF",
+          "gravedadF": "$_gravedadF",
+          "fechaHoraF": "$_fechaHoraF",
+          "notaF": "$_notaF"
+        }).then((response){
+      print('Response status : ${response.statusCode}');
+      print('Response body : ${response.body}');
+      if (response.statusCode == 200) {
+        _toast.toastmsg("Se ha actualizado con exito");
+      }
+    });
+  }
+
+  //function for delete
+  void removeRegister(String idSgtoF) async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'token';
+    final value = prefs.get(key ) ?? 0;
+
+    String myUrl = "$serverUrl/api/sgtofamily/$idSgtoF";
+    http.delete(myUrl,
+        headers: {
+          'Accept':'application/json',
+          'Authorization' : 'Bearer $value'
+        } ).then((response){
+      print('Response status : ${response.statusCode}');
+      print('Response body : ${response.body}');
+      if (response.statusCode == 200) {
+        _toast.toastmsg("Se ha eliminado con exito");
+      }
+    });
+  }
+
   ///
   ///function save
   ///

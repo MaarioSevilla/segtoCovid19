@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:http/http.dart' as http;
 import 'package:segtocovid19/clases/datasymptom.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/detalles_ui/updatefever/read_symptoms_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/controllers/databasehelper_sgto.dart';
 
@@ -79,7 +78,13 @@ class ItemList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5.0)),
             elevation: 0.0,
             onPressed: () {
-
+              Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => new ReadFever(
+                      list: list,
+                      index: i,
+                    )),
+              );
             },
             child: new Container(
               alignment: Alignment.center,

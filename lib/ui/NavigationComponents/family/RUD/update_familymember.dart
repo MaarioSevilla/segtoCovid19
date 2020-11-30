@@ -51,7 +51,7 @@ class _UpdateFamilyMemberState extends State<UpdateFamilyMember> {
             new Column(
               children: <Widget>[
                 new ListTile(
-                  leading: const Icon(Icons.person, color: Colors.black),
+                  leading: const Icon(Icons.portrait, color: Colors.black),
                   title: new TextFormField(
                     controller: parentescoController,
                     validator: (value) {
@@ -63,38 +63,38 @@ class _UpdateFamilyMemberState extends State<UpdateFamilyMember> {
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.location_on, color: Colors.black),
+                  leading: const Icon(Icons.person, color: Colors.black),
                   title: new TextFormField(
                     controller: nombreFController,
                     validator: (value) {
-                      if (value.isEmpty) return "Price";
+                      if (value.isEmpty) return "Nombre";
                     },
                     decoration: new InputDecoration(
-                      hintText: "Price", labelText: "Price",
+                      hintText: "Price", labelText: "Nombre",
                     ),
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.settings_input_component, color: Colors.black),
+                  leading: const Icon(Icons.bubble_chart, color: Colors.black),
                   title: new TextFormField(
                     controller: apellidoFController,
                     validator: (value) {
-                      if (value.isEmpty) return "Ingresa Stock";
+                      if (value.isEmpty) return "Apellido paterno";
                     },
                     decoration: new InputDecoration(
-                      hintText: "Stock", labelText: "Stock",
+                      hintText: "Stock", labelText: "Apellido paterno",
                     ),
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.settings_input_component, color: Colors.black),
+                  leading: const Icon(Icons.bubble_chart, color: Colors.black),
                   title: new TextFormField(
                     controller: apellidoFIIController,
                     validator: (value) {
-                      if (value.isEmpty) return "Ingresa Stock";
+                      if (value.isEmpty) return "Apellido materno";
                     },
                     decoration: new InputDecoration(
-                      hintText: "Stock", labelText: "Stock",
+                      hintText: "Stock", labelText: "Apellido materno",
                     ),
                   ),
                 ),

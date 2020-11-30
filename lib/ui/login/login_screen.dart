@@ -197,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //funcion singin
-  signIn(String matricula, pass) async {
+  signIn(String matricula, String pass) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     Map data = {
       'matricula': matricula,

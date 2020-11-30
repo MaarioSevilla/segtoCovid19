@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:segtocovid19/ui/NavigationComponents/profile/resultado/resultado_screen.dart';
+import 'package:segtocovid19/ui/NavigationComponents/profile/terminos/terminos_screen.dart';
 import 'package:segtocovid19/ui/componentsuniversale/line.dart';
 import 'package:segtocovid19/ui/login/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'aboutme/aboutme_screen.dart';
 import 'crudestudiantil/crudestudiantil_screen.dart';
-import 'crudestudiantil/newgroup_screen.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -128,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 SizedBox(height:  size.width *.045),
                 SizedBox(
                   width: size.width *1,
-                  child: Text('Configuracion de la app',
+                  child: Text('Sobre Segto Covid-19',
                     textAlign: TextAlign.center,
                     style: new TextStyle(
                       fontWeight: FontWeight.bold,
@@ -142,35 +142,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           Card(
             child: ListTile(
-              leading: Icon(Ionicons.ios_contrast),
-              title: Text('Tema de la app'),
-              trailing: Icon(Ionicons.ios_arrow_forward),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => RegisterNewGroup(),
-                  ),
-                );
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              leading: Icon(Ionicons.ios_build),
-              title: Text('Lenguaje'),
-              onTap: () {
-
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
               leading: Icon(Ionicons.ios_document),
               title: Text('Terminos y condiciones'),
               trailing: Icon(Ionicons.ios_arrow_forward),
-              onTap: () async {
-
+              onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Terms(),
+                    ),
+                  );
                 },
             ),
           ),

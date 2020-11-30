@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:segtocovid19/controllers/databasehelper_aire.dart';
-import 'package:segtocovid19/controllers/databasehelper_sgto.dart';
-import 'package:segtocovid19/controllers/databasehelper_tos.dart';
-import 'package:segtocovid19/ui/NavigationComponents/segto/detalles_ui/update/details_update_screen.dart';
-import 'package:segtocovid19/providers/globals.dart' as globals;
+import 'package:segtocovid19/controllers/databasehelper_temperature.dart';
+import 'package:segtocovid19/ui/NavigationComponents/segto/detalles_ui/updatefever/details_update_screen.dart';
 
-class ReadSymtom extends StatefulWidget {
+class ReadFever extends StatefulWidget {
 
   final List list;
   final int index;
-  ReadSymtom({this.list, this.index});
+  ReadFever({this.list, this.index});
 
   @override
-  _ReadSymtomState createState() => _ReadSymtomState();
+  _ReadFeverState createState() => _ReadFeverState();
 
 }
 
-class _ReadSymtomState extends State<ReadSymtom> {
+class _ReadFeverState extends State<ReadFever> {
 
-  DataBaseHelperSgto _helperSgto = new DataBaseHelperSgto();
-  DataBaseHelperAir _helperAir = new DataBaseHelperAir();
-  DataBaseHelperTos _helperTos = new DataBaseHelperTos();
-  String sintoma;
+  DataBaseHelperTemperature _helperTemperature = new DataBaseHelperTemperature();
 
   @override
   void initState() {
-    sintoma=globals.sintomaG;
     super.initState();
   }
 
@@ -33,7 +26,7 @@ class _ReadSymtomState extends State<ReadSymtom> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Detalles del sintoma"),
+      appBar: new AppBar(title: new Text("Detalles de temperatura"),
         backgroundColor: Color(0xff3F005C),
       ),
       backgroundColor: Color(0xffE8E2EE),
@@ -52,10 +45,10 @@ class _ReadSymtomState extends State<ReadSymtom> {
             child: new Column(
               children: <Widget>[
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
-                new Text('Sintoma $sintoma', style: new TextStyle(fontSize: 20.0),),
+                new Text('Registro', style: new TextStyle(fontSize: 20.0),),
                 Divider(),
-                new Text("Gravedad : ${widget.list[widget.index]['gravedad']} ", style: new TextStyle(fontSize: 18.0),),
-                new Text("Fecha y hora : ${widget.list[widget.index]['fechaHora']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Temperatura : ${widget.list[widget.index]['temperatura']}° C", style: new TextStyle(fontSize: 18.0),),
+                new Text("Fecha y hora : ${widget.list[widget.index]['fecha']}", style: new TextStyle(fontSize: 18.0),),
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
                 new Row(
@@ -69,7 +62,7 @@ class _ReadSymtomState extends State<ReadSymtom> {
                       onPressed:() {
                         Navigator.of(context).push(
                             new MaterialPageRoute(
-                              builder: (BuildContext context)=>new UpdateSymtom(list: widget.list, index: widget.index,),
+                              builder: (BuildContext context)=>new UpdateFever(list: widget.list, index: widget.index,),
                             )
                         );
                       },
@@ -103,16 +96,7 @@ class _ReadSymtomState extends State<ReadSymtom> {
           child: new Text("OK remove!",style: new TextStyle(color: Colors.white),),
           color: Colors.red,
           onPressed: () {
-            if(sintoma=="Tos seca"){
-              print("table tos");
-              _helperTos.removeRegister(widget.list[widget.index]['idSegtoTos'].toString());
-            }else if(sintoma=="Dificultad para respirar"){
-              print("table aire");
-              _helperAir.removeRegister(widget.list[widget.index]['idSegtoAire'].toString());
-            }else{
-              print("table sgto");
-              _helperSgto.removeRegister(widget.list[widget.index]['idSgtoSintomas'].toString());
-            }
+            _helperTemperature.removeRegister(widget.list[widget.index]['idSgtoTemp'].toString());
             //notificacion y cambiar de pantalla
           },
         ),

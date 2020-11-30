@@ -338,8 +338,8 @@ const List<String> ingenierias = const <String>[
   'Ing. Financiera',
   'Ing. Mecánica Automotriz',
   'Ing. Mecatrónica',
-  'Ing. Redes y Telecomunicaciones',
-  'Ing. Sistemas y Tecnologías Industriales',
+  'Ing. Redes y Telecomunicaci...',
+  'Ing. Sistemas y Tecnologías...',
   'Ing. Software',
   'Ing. Telemática',
   'Esp. Biotecnología Ambiental',
@@ -369,6 +369,10 @@ abreviacion(String carrera){
     abr='Ing-Aut_';
   }else if(carrera=='Ing. Mecatrónica'){
     abr='Ing-Mect_';
+  }else if(carrera=='Ing. Redes y Telecomunicaci...'){
+    abr='Ing-ReTe_';
+  }else if(carrera=='Ing. Sistemas y Tecnologías...'){
+    abr='Ing-SisT_';
   }else if(carrera=='Ing. Software'){
     abr='Ing-Soft_';
   }else if(carrera=='Ing. Telemática'){

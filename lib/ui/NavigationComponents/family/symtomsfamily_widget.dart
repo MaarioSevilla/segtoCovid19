@@ -48,6 +48,7 @@ class _SymtomsFamilyWidgetState extends State<SymtomsFamilyWidget> {
         print(e);
       }
     }
+    hola = true;
   }
 
   @override
@@ -190,7 +191,9 @@ class _SymtomsFamilyWidgetState extends State<SymtomsFamilyWidget> {
                                   borderRadius: BorderRadius.circular(15.0)),
                               color: Color(0xffFB8274),
                               onPressed: () {
-                                getDataLastThree();
+                                setState(() {
+                                  getDataLastThree();
+                                });
                               },
                               child: Icon(Icons.refresh, color: Colors.purple),
                             ),

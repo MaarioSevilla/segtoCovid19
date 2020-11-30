@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:segtocovid19/ui/NavigationComponents/family/addSymptomFam/optionssymptomfamily_screen.dart';
+import 'package:segtocovid19/ui/NavigationComponents/family/details/readsymtomsf_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/providers/globals.dart' as globals;
 
@@ -74,7 +74,13 @@ class ItemList extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: new GestureDetector(
             onTap: () {
-              //Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context) => new OptionsSymptomFamily(list: list, index: i,));
+              Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => new ReadSymtomFamily(
+                      list: list,
+                      index: i,
+                    )),
+              );
             },
             child: new Container(
               margin: EdgeInsets.symmetric(vertical: 0),

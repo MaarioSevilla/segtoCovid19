@@ -13,7 +13,7 @@ class _AboutMeState extends State<AboutMe> {
 
   DataBaseHelperUser _helperUser = new DataBaseHelperUser();
   bool hola =false;
-  String nombre,apellido,correo,matricula;
+  String nombre,apellido,correo,matricula, apellidoI, apellidoII, tipoUser;
   var user;
 
   loadDataUser() async {
@@ -24,12 +24,16 @@ class _AboutMeState extends State<AboutMe> {
         List<dynamic> data = map["data"];
         matricula=(data[0]["matricula"].toString());
         nombre=(data[0]["nombre"].toString());
+        correo=(data[0]["email"].toString());
+        apellidoI=(data[0]["apellido"].toString());
+        apellidoII=(data[0]["apellidoII"].toString());
+        tipoUser=(data[0]["tipoUsuario"].toString());
         if(data[0]["apellidoII"].toString()!=null){
           apellido=(data[0]["apellido"].toString()+' '+data[0]["apellidoII"].toString());
         }else{
           apellido=(data[0]["apellido"].toString());
         }
-        correo=(data[0]["email"].toString());
+
         hola = true;
       }catch(e){
         print(e);
@@ -209,15 +213,15 @@ class _AboutMeState extends State<AboutMe> {
                                 onPressed: () async {
                                   user = new User();
                                   user.matricula = matricula;
-                                  user.email = matricula;
+                                  user.email = correo;
                                   user.password = matricula;
-                                  user.nombre = matricula;
-                                  user.apellido = matricula;
-                                  user.apellidoII = matricula;
-                                  user.tipoUsuario = matricula;
+                                  user.nombre = nombre;
+                                  user.apellido = apellidoI;
+                                  user.apellidoII = apellidoII;
+                                  user.tipoUsuario = tipoUser;
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                        builder: (BuildContext context) => UpdateMe()
+                                        builder: (BuildContext context) => UpdateMe(user)
                                     ),
                                   );
                                 },
@@ -238,7 +242,9 @@ class _AboutMeState extends State<AboutMe> {
                                     borderRadius: BorderRadius.circular(15.0)),
                                 color: Color(0xffFB8274),
                                 onPressed: () {
-                                  loadDataUser();
+                                  setState(() {
+                                    loadDataUser();
+                                  });
                                 },
                                 child: Icon(Icons.refresh, color: Colors.orangeAccent),
                               ),

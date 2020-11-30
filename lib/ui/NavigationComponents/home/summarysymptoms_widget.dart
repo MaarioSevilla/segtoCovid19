@@ -43,9 +43,9 @@ class _SummarySymtomsState extends State<SummarySymtoms> {
       try{
         List<dynamic> data = map["data"];
         if(_registro1 == null){
-          _registro1=(data[0]["fechaHora"].toString()+' - Falta de aire');
+          _registro1=(data[0]["fechaHora"].toString()+' - Difuculatad para respirar');
         }else{
-          _registro2=(data[0]["fechaHora"].toString()+' - Falta de aire');
+          _registro2=(data[0]["fechaHora"].toString()+' - Difuculatad para respirar');
         }
       }catch(e){
         print(e);
