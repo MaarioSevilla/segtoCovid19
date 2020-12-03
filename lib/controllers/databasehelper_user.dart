@@ -221,6 +221,14 @@ class DataBaseHelperUser {
     });
   }
 
+  sendNotification (String matriculai) async {
+    String url = "$serverUrl/api/notifications/generate/$matriculai";
+    var response = await http.post(url);
+    if(response.statusCode ==200){
+      _toast.toastmsg("Se ha enviado una notificacion a los integrantes de tu grupo");
+    }
+  }
+
   ///
   ///function for delete
   ///

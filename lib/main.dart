@@ -4,6 +4,7 @@ import 'package:segtocovid19/providers/conex_provider.dart';
 import 'package:segtocovid19/ui/login/login_screen.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:segtocovid19/providers/globals.dart' as globals;
 
 void main() async {
 
@@ -49,6 +50,7 @@ class _MainPageState extends State<MainPage> {
     if(sharedPreferences.getString("token") == null) {
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => LoginScreen()), (Route<dynamic> route) => false);
     }else{
+      globals.matricula=sharedPreferences.getString("matricula");
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context) => Menu()), (Route<dynamic> route) => false);
     }
   }

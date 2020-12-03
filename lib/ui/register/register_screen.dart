@@ -4,6 +4,7 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:segtocovid19/controllers/databasehelpers.dart';
 import 'package:segtocovid19/ui/menu_screen.dart';
 import 'package:segtocovid19/ui/register/cancel_button.dart';
+import 'package:segtocovid19/providers/globals.dart' as globals;
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -242,6 +243,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         //msgStatus = 'Check email or password';
                                       }else{
                                         saveM(_matriculaController.text);
+                                        globals.matricula=_matriculaController.text;
                                         Navigator.pushAndRemoveUntil(
                                           context,
                                           MaterialPageRoute(builder: (context) => Menu()),

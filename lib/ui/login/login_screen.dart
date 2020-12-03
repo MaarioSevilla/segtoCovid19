@@ -222,6 +222,7 @@ class _LoginScreenState extends State<LoginScreen> {
           });
           sharedPreferences.setString("token", jsonResponse['token']);
           sharedPreferences.setString("matricula", matricula);
+          globals.matricula=matricula;
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (BuildContext context) => Menu()), (
               Route<dynamic> route) => false);

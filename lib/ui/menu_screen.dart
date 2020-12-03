@@ -1,11 +1,14 @@
+import 'dart:convert';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:segtocovid19/ui/NavigationComponents/family/family_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/home/home_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/profile/profile_screen.dart';
 import 'package:segtocovid19/ui/NavigationComponents/segto/segto_screen.dart';
-
 import 'notifications/notifications_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:segtocovid19/providers/globals.dart' as globals;
 
 class Menu extends StatefulWidget {
   @override
@@ -16,6 +19,8 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
 
+  static const serverUrl = globals.urlServer;
+  String _matricula='';
   int _currentIndex = 0;
   final List<Widget> _children = [
     MyHomeScreenPage(),
@@ -23,6 +28,33 @@ class _MenuState extends State<Menu> {
     FamilyScreen(),
     ProfileScreen()
   ];
+
+  bool resultado = false;
+  var data='';
+
+  Future getallDataNotoficaciones() async {
+    var url = "$serverUrl/api/notifications/count/$_matricula";
+    var response = await http.get(url);
+    if(response.statusCode ==200){
+      if(int.parse(response.body)>0){
+        print(response.body);
+        setState(() {
+          resultado = true;
+          data= response.body;
+        });
+      }
+    }
+    print('hola '+response.body);
+    print(data);
+  }
+
+  @override
+  void initState() {
+    _matricula=globals.matricula;
+    print('matricula notificaciones $_matricula');
+    super.initState();
+    getallDataNotoficaciones();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +64,32 @@ class _MenuState extends State<Menu> {
           color: Colors.white
         )),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Ionicons.ios_notifications),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NotificationsScreen(),
-                ),
-              );
-            },
+          resultado ?  //Esta es igual nombre de la columna de la bd donde se encuentran los datos que quieres que se reflejen en las notificaciones
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (_)=>UnSeenNotificationPage(),),).whenComplete(() => getallDataNotoficaciones());
+              },
+              child: Badge(
+                badgeContent: Text('$data', style: TextStyle(color: Colors.white),),
+                child: Icon(Icons.notifications_active),
+              ),
+            ),
           )
+              : Padding(
+            padding: const EdgeInsets.all(15),
+            child: InkWell(
+              onTap: (){
+
+              },
+              child: Badge(
+                badgeContent: Text('0', style: TextStyle(color: Colors.white)),
+                child: Icon(Icons.notifications_none),
+              ),
+            ),
+          ),
+
         ],
         backgroundColor: Color(0xff3F005C),
       ),
@@ -81,6 +128,7 @@ class _MenuState extends State<Menu> {
     });
   }
 }
+
 /**
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

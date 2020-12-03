@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:segtocovid19/ui/NavigationComponents/profile/crudestudiantil/newgroup_screen.dart';
+import 'package:segtocovid19/ui/NavigationComponents/profile/crudestudiantil/view_infected_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:segtocovid19/providers/globals.dart' as globals;
 import 'package:segtocovid19/controllers/datbasehelper_circle.dart';
@@ -37,8 +38,10 @@ class _CrudEstudiantilState extends State<CrudEstudiantil> {
     String myUrl = "$serverUrl/api/circulo/cebyid/$_matricula";
     try{
       final response = await http.get(myUrl);
-      Map<String, dynamic> map = json.decode(response.body);
-      datae = map["data"];
+      if(response.statusCode == 200){
+        Map<String, dynamic> map = json.decode(response.body);
+        datae = map["data"];
+      }
     }catch(e){
       print(e);
     }
@@ -88,7 +91,11 @@ class _CrudEstudiantilState extends State<CrudEstudiantil> {
                     new MaterialPageRoute(
                       builder: (context) => new RegisterNewGroup(),
                     ),
-                  );
+                  ).whenComplete(() {
+                    setState(() {
+                      getData();
+                    });
+                  });
                 },
               ),
             ),
@@ -122,7 +129,13 @@ class _CrudEstudiantilState extends State<CrudEstudiantil> {
                           new DataCell(
                               new Text(element["idGrupo"]),
                             onTap: () {
-
+                                globals.group=element["idGrupo"].toString();
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                  builder: (context) => new ViewIfected(),
+                                ),
+                              );
                             },
                           ),
                           new DataCell(

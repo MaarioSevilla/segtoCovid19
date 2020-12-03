@@ -105,6 +105,7 @@ class _ResultadoCovidScreenState extends State<ResultadoCovidScreen> {
                                 print('ambos cambian $_timeStringDB');
                                 _resultadoCovidfinal='1';
                                 _helperUser.editarCovid(idCovi,matriculai,_resultadoCovidfinal,_timeStringDB,fechaNegativoCE);
+                                _helperUser.sendNotification(matriculai);
                                 //si all sale bien
                                 switchValue = changedValue;
                                 setState(() {
@@ -119,6 +120,7 @@ class _ResultadoCovidScreenState extends State<ResultadoCovidScreen> {
                               //si all sale bien
                               _resultadoCovidfinal='1';
                               _helperUser.editarCovid(idCovi,matriculai,_resultadoCovidfinal,_timeStringDB,fechaNegativoCE);
+                              _helperUser.sendNotification(matriculai);
                               switchValue = changedValue;
                               setState(() {
                                 switchValue = changedValue;
