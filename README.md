@@ -2,7 +2,15 @@
 
 A new Flutter project.
 
-![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/Imagen1.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image011.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image012.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image013.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image014.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image015.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image016.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image017.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image018.png?raw=true)
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/image019.png?raw=true)
 
 ## Getting Started
 
