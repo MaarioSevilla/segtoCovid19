@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+![alt text](https://github.com/MaarioSevilla/segtoCovid19/blob/patch-1/Imagen1.png?raw=true)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
